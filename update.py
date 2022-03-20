@@ -175,6 +175,7 @@ def duplicate_events(events_service: discovery.Resource, source_calendar_address
                     break
             # if they're different, update the existing one
             if not existing_target_matches:
+                expected_target_event['id'] = existing_target_event['id']
                 update_event(events_service, calendar_address=target_calendar_address,
                              event=expected_target_event)
                 updated_count += 1
