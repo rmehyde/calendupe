@@ -157,7 +157,7 @@ def duplicate_events(events_service: discovery.Resource, source_calendar_address
     updated_count = 0
     for source_event in events:
         expected_target_event = source_event_to_target_event(source_event)
-        existing_target_event = fetch_target_event(events_service, calendar_address=source_calendar_address,
+        existing_target_event = fetch_target_event(events_service, calendar_address=target_calendar_address,
                                                    source_event_id=source_event['id'])
         if existing_target_event is None:
             if expected_target_event['status'] == "cancelled":

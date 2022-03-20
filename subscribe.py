@@ -2,7 +2,6 @@ import logging
 import time
 from typing import Optional
 
-from google.oauth2.service_account import Credentials
 from googleapiclient import discovery
 
 from config import *
@@ -44,6 +43,8 @@ def unsubscribe(channel_service: discovery.Resource, channel_id: str, watched_re
 
 
 if __name__ == "__main__":
+    from google.oauth2.service_account import Credentials
+
     logging.basicConfig(level=logging.INFO)
 
     # load service account and create service

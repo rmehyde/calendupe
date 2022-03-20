@@ -48,16 +48,15 @@ Note that authentication is handled inside the API by matching the `TOKEN` confi
 #### Testing Subscription
 
 Ensure `REMAIN_SUBSCRIBED = False` in your latest deployment config. Run `subscribe.py` to subscribe to the calendar 
-for the default of 10 minutes, and ensure everything works as expected. Note that you'll need to modify the source 
+for slightly over 1 hour, and ensure everything works as expected. Note that you'll need to modify the source 
 calendar before an initial sync is made. If you need to unsubscribe, the required resource ID will be printed at 
 subscribe time as well as written into the `subscribe_logs` folder.
 
 #### Permanent Deployment
 
 If your test subscription hasn't yet expired, unsubscribe. Update `REMAIN_SUBSCRIBED = True` in your config and 
-redeploy the function. Update the `ttl_seconds` parameter in the main block of `subscribe.py` to `3690`, and run the 
-subscription. Check your cloud function logs to ensure that it subscribed to the channel and scheduled a successful 
-resubscription shortly after.
+redeploy the function. Re-run the subscription, unsubscribing before if needed. Check your cloud function logs to 
+ensure that it subscribed to the channel and scheduled a successful resubscription shortly after.
 
 #### Disabling
 
