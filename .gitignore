@@ -1,0 +1,8 @@
+.idea
+
+__pycache__/
+
+service-account.json
+config.py
+
+subscribe_logs
