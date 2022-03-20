@@ -3,7 +3,7 @@
 Calendupe copies obfuscated events from one calendar into another. For example, use it to copy events from a personal 
 calendar into a work one.
 
-TODO: image
+![Calendupe screenshot](screenshot.png)
 
 ## Implementation
 
