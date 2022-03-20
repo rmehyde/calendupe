@@ -40,7 +40,8 @@ Create a Tasks queue, e.g. `gcloud tasks queues create calendupe-subscribe`
 
 #### Deploying Function
 
-from `calendupe` folder:
+From the `calendupe` folder:
+
 `gcloud functions deploy calendupe --runtime python39 --trigger-http --allow-unauthenticated --service-account=<SERVICE_ACCOUNT>`
 
 Note that authentication is handled inside the API by matching the `TOKEN` configuration parameter.
