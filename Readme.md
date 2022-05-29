@@ -67,3 +67,11 @@ In order to disable calendupe:
 1. Ensure the current deployment has `REMAIN_SUBSCRIBED = False`
 2. Run the `subscribe.unsubscribe()` method
 3. Remove any pending resubscription tasks. This can be done from the Cloud Tasks Console
+
+## Future Enhancements
+
+I hope to add:
+- Custom naming and behavior for "free" events: they'll currently be copied with the same name (default "busy 
+(personal)") and same availability
+- Notification override: target calendar events use the default notification scheme, and don't respect the service 
+account trying to override it. Depends on [this Calendar bug](https://issuetracker.google.com/issues/141903683)

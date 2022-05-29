@@ -20,8 +20,8 @@ SOURCE_EVENT_KEY = "sourceEventId"
 def list_events(events_service: discovery.Resource, calendar_address: str,
                 sync_token: Optional[str] = None, min_end_time: Optional[datetime] = None,
                 only_calendupe_events=False) -> Tuple[List[Dict[str, Any]], str]:
-    """
-    List all matching calendar events
+    """List all matching calendar events
+    
     :param events_service: a Google Calendar Events Python Service
     :param calendar_address: address of the calendar to list events for, e.g. 'primary' or 'you@your.domain'
     :param sync_token: a sync token to use, to fetch changes since the previous token
@@ -79,9 +79,9 @@ def delete_all_calendupe_events(events_service: discovery.Resource, calendar_add
 
 def source_event_to_target_event(source_event: Dict[str, Any], title=DEFAULT_TARGET_EVENT_NAME,
                                  description=DEFAULT_TARGET_EVENT_DESCRIPTION) -> Dict[str, Any]:
-    """
-    Convert an event data for an event on the source calendar into obfuscated event data to be added to the target
+    """Convert an event data for an event on the source calendar into obfuscated event data to be added to the target
     calendar.
+
     :param source_event: the event data from the source calendar
     :param title: title/summary of the event to return. defaults to "busy (personal)"
     :param description: description of the event to return. defaults to "created by calendupe"
@@ -92,6 +92,7 @@ def source_event_to_target_event(source_event: Dict[str, Any], title=DEFAULT_TAR
         target_event['end'] = source_event['end']
         target_event['summary'] = title
         target_event['description'] = description
+        target_event['reminders'] = {'useDefault': False, 'overrides': []}
     if 'recurrence' in source_event.keys():
         target_event['recurrence'] = source_event['recurrence']
 
@@ -105,8 +106,8 @@ def source_event_to_target_event(source_event: Dict[str, Any], title=DEFAULT_TAR
 
 def fetch_target_event(events_service: discovery.Resource,
                        calendar_address: str, source_event_id: str) -> Optional[Dict[str, Any]]:
-    """
-    Given event ID on the source calendar, retrieve an associated event on the target calendar.
+    """Given event ID on the source calendar, retrieve an associated event on the target calendar.
+
     :param events_service: a Google Calendar Events Python Service
     :param calendar_address: address of the target calendar, e.g. 'primary' or 'you@your.domain'
     :param source_event_id: event ID of the event on the source calendar
@@ -128,6 +129,7 @@ def duplicate_events(events_service: discovery.Resource, source_calendar_address
                      allow_same_calendar=False) -> str:
     """
     Duplicate events from source to target calendar.
+
     :param events_service: a Google Calendar Events Python Service
     :param source_calendar_address: address of the calendar to copy events from, e.g. "primary" or "you@your.domain"
     :param target_calendar_address: address of the calendar to copy events into, e.g. "primary" or "you@your.domain"

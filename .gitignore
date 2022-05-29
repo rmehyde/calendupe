@@ -4,5 +4,6 @@ __pycache__/
 
 service-account.json
 config.py
+scratch.py
 
 subscribe_logs
